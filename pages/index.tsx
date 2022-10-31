@@ -25,7 +25,7 @@ export default function Home() {
               href="https://github.com/philipesclamado"
             >
               <svg
-                className="h-5 w-5"
+                className="h-5 w-5 fill-current hover:text-highlightColor"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 496 512"
               >
@@ -39,7 +39,7 @@ export default function Home() {
               href="mailto:philipesclamado@uvic.ca"
             >
               <svg
-                className="h-5 w-5"
+                className="h-5 w-5 fill-current hover:text-highlightColor"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512"
               >
