@@ -1,12 +1,13 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import { CachedThoughts, CompanyName } from "../src/constants/constants";
 
 const Home: NextPage = () => {
   return (
     <div className="py-16">
       <Head>
-        <title>Philip Esclamado</title>
+        <title>{CompanyName}</title>
         <meta
           name="description"
           content="Philip Esclamado's home on the internet"
@@ -35,7 +36,7 @@ const Home: NextPage = () => {
           <div>
             <div id="title">
               <h1 className="text-xl font-semibold sm:text-2xl">
-                Philip Esclamado
+                {CompanyName}
               </h1>
             </div>
             <div className="z-50 flex flex-row items-center space-x-4">
@@ -73,16 +74,11 @@ const Home: NextPage = () => {
       </header>
 
       <main>
-        Hello, World!
         <section id="about">
-          <p className="my-4">
-            Some cached thoughts:
-            <br />
-            - ion propulsion
-            <br />
-            - quaslinear quadratic forms and function fields of quadrics
-            <br />- penis
-          </p>
+          <p className="mt-4">Some cached thoughts:</p>
+          {CachedThoughts.map((thoughts, i) => {
+            return <p key={i}>{thoughts}</p>;
+          })}
           <p className="flex my-4">
             Find me on&nbsp;
             <a
