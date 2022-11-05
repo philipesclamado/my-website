@@ -47,7 +47,7 @@ const Home: NextPage = () => {
         <section id="about">
           <p className="mt-4">Some cached thoughts:</p>
           {CachedThoughts.map((thoughts, i) => {
-            return <p>{thoughts}</p>;
+            return <p key={i}>{thoughts}</p>;
           })}
           <p className="flex flex-row my-4">
             Find me on&nbsp;
@@ -88,7 +88,7 @@ const Home: NextPage = () => {
           {Articles.map((article) => {
             return (
               <div className="flex flex-row">
-                <p>{article.date}:</p>
+                <p key={article.date}>{article.date}:</p>
                 &nbsp;
                 <Link
                   href={article.link}
@@ -96,7 +96,10 @@ const Home: NextPage = () => {
                   rel="noreferrer"
                   type="application/pdf"
                 >
-                  <p className="break-words underline hover:decoration-highlightColor">
+                  <p
+                    className="break-words underline hover:decoration-highlightColor"
+                    key={article.title}
+                  >
                     {article.title}
                   </p>
                 </Link>
@@ -111,7 +114,12 @@ const Home: NextPage = () => {
           {Experiences.map((experience) => {
             return (
               <div className="flex flex-row">
-                <Link target="_blank" rel="noreferrer" href={experience.link}>
+                <Link
+                  target="_blank"
+                  rel="noreferrer"
+                  href={experience.link}
+                  key={experience.link}
+                >
                   <p
                     className="underline hover:decoration-highlightColor font-bold"
                     key={experience.title}
@@ -120,7 +128,7 @@ const Home: NextPage = () => {
                   </p>
                 </Link>
                 &nbsp;
-                <p>{experience.description}</p>
+                <p key={experience.description}>{experience.description}</p>
               </div>
             );
           })}
