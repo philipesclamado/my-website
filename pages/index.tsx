@@ -9,7 +9,7 @@ import {
   Experiences,
 } from "../src/constants";
 
-const Home: NextPage = () => {
+export default function Home() {
   return (
     <div className="py-16">
       <Head>
@@ -140,5 +140,4 @@ const Home: NextPage = () => {
       </footer>
     </div>
   );
-};
-export default Home;
+}
