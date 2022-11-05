@@ -4,13 +4,8 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  @apply text-gray-700;
-}
-
 html,
 body {
-  padding: 0;
   margin-left: auto;
   margin-right: auto;
   width: max-content;
