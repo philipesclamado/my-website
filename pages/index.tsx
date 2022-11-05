@@ -85,9 +85,9 @@ const Home: NextPage = () => {
           <span>
             <h1 className="text-xl font-semibold mt-12 mb-4">Papers</h1>
           </span>
-          {Articles.map((article) => {
+          {Articles.map((article, i) => {
             return (
-              <div className="flex flex-row">
+              <div className="flex flex-row" key={i}>
                 <p key={article.date}>{article.date}:</p>
                 &nbsp;
                 <Link
@@ -111,9 +111,9 @@ const Home: NextPage = () => {
           <span>
             <h1 className="text-xl font-semibold mt-12 mb-4">Projects</h1>
           </span>
-          {Experiences.map((experience) => {
+          {Experiences.map((experience, i) => {
             return (
-              <div className="flex flex-row">
+              <div className="flex flex-row" key={i}>
                 <Link
                   target="_blank"
                   rel="noreferrer"
