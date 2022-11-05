@@ -12,15 +12,6 @@ import {
 const Home: NextPage = () => {
   return (
     <div className="py-16">
-      <Head>
-        <title>{CompanyName}</title>
-        <meta
-          name="description"
-          content="Philip Esclamado's home on the internet"
-        />
-        <Link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <header className="flex flex-row relative mb-8" id="header">
         <Image
           className="absolute rounded-full"
@@ -53,7 +44,7 @@ const Home: NextPage = () => {
             Find me on&nbsp;
             <Link
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               href="https://github.com/philipesclamado"
             >
               <svg
@@ -67,7 +58,7 @@ const Home: NextPage = () => {
             ,&nbsp;
             <Link
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               href="mailto:philipesclamado@uvic.ca"
             >
               <svg
@@ -82,9 +73,7 @@ const Home: NextPage = () => {
           </p>
         </section>
         <section id="writing">
-          <span>
-            <h1 className="text-xl font-semibold mt-12 mb-4">Papers</h1>
-          </span>
+          <h1 className="text-xl font-semibold mt-12 mb-4">Papers</h1>
           {Articles.map((article, i) => {
             return (
               <div className="flex flex-row" key={i}>
@@ -93,7 +82,7 @@ const Home: NextPage = () => {
                 <Link
                   href={article.link}
                   target="blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   type="application/pdf"
                 >
                   <p
@@ -108,15 +97,13 @@ const Home: NextPage = () => {
           })}
         </section>
         <section id="projects">
-          <span>
-            <h1 className="text-xl font-semibold mt-12 mb-4">Projects</h1>
-          </span>
+          <h1 className="text-xl font-semibold mt-12 mb-4">Projects</h1>
           {Experiences.map((experience, i) => {
             return (
               <div className="flex flex-row" key={i}>
                 <Link
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   href={experience.link}
                   key={experience.link}
                 >
