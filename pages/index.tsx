@@ -18,7 +18,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="py-8 w-96 md:py-16">
+      <div className="py-8 w-96 md:py-16 md:w-max">
         <header className="flex flex-row relative mb-8" id="header">
           <Image
             className="opcaity-0 md:opcaity-100 absolute rounded-full"
