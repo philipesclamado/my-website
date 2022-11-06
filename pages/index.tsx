@@ -11,7 +11,13 @@ import {
 
 const Home: NextPage = () => {
   return (
-    <div className="py-16">
+    <div>
+      <Head>
+        <title>Philip Esclamado</title>
+        <meta name="description" content="Home for thoughts" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <header className="flex flex-row relative mb-8" id="header">
         <Image
           className="absolute rounded-full"
@@ -28,15 +34,11 @@ const Home: NextPage = () => {
 
       <main>
         <section id="about">
-          <p className="text-sm mt-4">Some cached thoughts:</p>
+          <p className="mt-4">Some cached thoughts:</p>
           {CachedThoughts.map((thoughts, i) => {
-            return (
-              <p className="text-sm" key={i}>
-                {thoughts}
-              </p>
-            );
+            return <p key={i}>{thoughts}</p>;
           })}
-          <p className="flex flex-row my-4 text-sm">
+          <p className="flex flex-row my-4">
             Find me on&nbsp;
             <Link
               target="_blank"
@@ -72,7 +74,7 @@ const Home: NextPage = () => {
           <h1 className="text-xl font-semibold mt-12 mb-4">Papers</h1>
           {Articles.map((article, i) => {
             return (
-              <div className="flex flex-row p-2 text-sm" key={i}>
+              <div className="flex flex-row p-2" key={i}>
                 <p key={article.date}>{article.date}:</p>
                 &nbsp;
                 <Link
@@ -80,7 +82,7 @@ const Home: NextPage = () => {
                   target="blank"
                   rel="noopener noreferrer"
                 >
-                  <div className="w-80">
+                  <div className="w-72">
                     <p
                       className="break-words underline hover:decoration-highlightColor leading-relaxed"
                       key={article.title}
@@ -97,8 +99,8 @@ const Home: NextPage = () => {
           <h1 className="text-xl font-semibold mt-12 mb-4">Projects</h1>
           {Experiences.map((experience, i) => {
             return (
-              <div className="flex flex-row p-2 text-sm" key={i}>
-                <div className="w-40">
+              <div className="flex flex-row p-2" key={i}>
+                <div className="w-44">
                   <Link
                     target="_blank"
                     rel="noopener noreferrer"
@@ -113,7 +115,7 @@ const Home: NextPage = () => {
                     </p>
                   </Link>
                 </div>
-                <div className="w-80">
+                <div className="w-72">
                   <p
                     className="break-words leading-relaxed"
                     key={experience.description}
