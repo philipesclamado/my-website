@@ -17,14 +17,6 @@ const Home: NextPage = () => {
           className="absolute rounded-full"
           height={60}
           width={60}
-          src="/images/mugshot-mono.jpg"
-          id="logo"
-          alt={""}
-        />
-        <Image
-          className="absolute rounded-full opacity-0 hover:opacity-100"
-          height={60}
-          width={60}
           src="/images/mugshot.jpg"
           id="logo"
           alt={""}
@@ -36,11 +28,15 @@ const Home: NextPage = () => {
 
       <main>
         <section id="about">
-          <p className="mt-4">Some cached thoughts:</p>
+          <p className="text-sm mt-4">Some cached thoughts:</p>
           {CachedThoughts.map((thoughts, i) => {
-            return <p key={i}>{thoughts}</p>;
+            return (
+              <p className="text-sm" key={i}>
+                {thoughts}
+              </p>
+            );
           })}
-          <p className="flex flex-row my-4">
+          <p className="flex flex-row my-4 text-sm">
             Find me on&nbsp;
             <Link
               target="_blank"
@@ -76,21 +72,22 @@ const Home: NextPage = () => {
           <h1 className="text-xl font-semibold mt-12 mb-4">Papers</h1>
           {Articles.map((article, i) => {
             return (
-              <div className="flex flex-row" key={i}>
+              <div className="flex flex-row p-2 text-sm" key={i}>
                 <p key={article.date}>{article.date}:</p>
                 &nbsp;
                 <Link
                   href={article.link}
                   target="blank"
                   rel="noopener noreferrer"
-                  type="application/pdf"
                 >
-                  <p
-                    className="break-words underline hover:decoration-highlightColor"
-                    key={article.title}
-                  >
-                    {article.title}
-                  </p>
+                  <div className="w-80">
+                    <p
+                      className="break-words underline hover:decoration-highlightColor leading-relaxed"
+                      key={article.title}
+                    >
+                      {article.title}
+                    </p>
+                  </div>
                 </Link>
               </div>
             );
@@ -100,22 +97,30 @@ const Home: NextPage = () => {
           <h1 className="text-xl font-semibold mt-12 mb-4">Projects</h1>
           {Experiences.map((experience, i) => {
             return (
-              <div className="flex flex-row" key={i}>
-                <Link
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={experience.link}
-                  key={experience.link}
-                >
-                  <p
-                    className="underline hover:decoration-highlightColor font-bold"
-                    key={experience.title}
+              <div className="flex flex-row p-2 text-sm" key={i}>
+                <div className="w-40">
+                  <Link
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={experience.link}
+                    key={experience.link}
                   >
-                    {experience.title}:
+                    <p
+                      className="underline hover:decoration-highlightColor font-bold"
+                      key={experience.title}
+                    >
+                      {experience.title}:
+                    </p>
+                  </Link>
+                </div>
+                <div className="w-80">
+                  <p
+                    className="break-words leading-relaxed"
+                    key={experience.description}
+                  >
+                    {experience.description}
                   </p>
-                </Link>
-                &nbsp;
-                <p key={experience.description}>{experience.description}</p>
+                </div>
               </div>
             );
           })}
