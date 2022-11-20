@@ -6,7 +6,7 @@ import { Footer } from "../../src/components/organisms";
 
 export default function Paper({ post }: any) {
   return (
-    <div className="py-8 w-96 md:py-16 md:w-max">
+    <div className="py-8 w-80 md:py-16 md:w-max">
       <article>
         <header>
           <h1 className="font-bold text-xl">{post.title}</h1>
