@@ -6,7 +6,7 @@ export const CachedThoughts = [
   "- multidimensional discrete convolution",
 ];
 
-export const Experiences = [
+export const Projects = [
   {
     title: "USV",
     description: "Unmanned Surface Vehicle",
@@ -18,4 +18,10 @@ export const Experiences = [
       "an acoustic sensor that estimates velocity relative to the sea bottom",
     link: "https://github.com/philipesclamado/doppler-velocity-log",
   },
+];
+
+export const NavMap = [
+  { name: "Home", link: "/" },
+  { name: "Papers", link: "/papers" },
+  { name: "Projects", link: "/#projects" },
 ];
