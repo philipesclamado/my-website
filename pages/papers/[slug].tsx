@@ -2,6 +2,7 @@ import { gql } from "@apollo/client";
 import React from "react";
 import client from "../../apolloClient";
 import { FaTag } from "react-icons/fa";
+import { Footer } from "../../src/components/organisms";
 
 export default function Paper({ post }: any) {
   return (
@@ -18,6 +19,7 @@ export default function Paper({ post }: any) {
         </header>
         <div dangerouslySetInnerHTML={{ __html: post.content.html }} />
       </article>
+      <Footer />
     </div>
   );
 }
@@ -66,5 +68,5 @@ export async function getStaticProps({ params }: any) {
   });
   const { posts } = data;
   const post = posts[0];
-  return { props: { post } };
+  return { props: { post }, revalidate: 60 * 60 };
 }
