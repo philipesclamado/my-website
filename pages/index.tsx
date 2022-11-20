@@ -2,15 +2,12 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  CachedThoughts,
-  CompanyName,
-  Articles,
-  Experiences,
-} from "../src/constants";
+import { CachedThoughts, CompanyName, Experiences } from "../src/constants";
 import { FaGithub, FaEnvelope } from "react-icons/fa";
+import client from "../apolloClient";
+import { gql } from "@apollo/client";
 
-const Home: NextPage = () => {
+const Home: NextPage = ({ posts }: any) => {
   return (
     <div>
       <Head>
@@ -74,24 +71,24 @@ const Home: NextPage = () => {
               &nbsp;.
             </p>
           </section>
-          <section id="writing">
+          <section id="papers">
             <h1 className="text-xl font-semibold mt-12 mb-4">Papers</h1>
-            {Articles.map((article, i) => {
+            {posts.map((post: any, i: any) => {
               return (
                 <div className="flex flex-row p-2 text-base md:text-sm" key={i}>
-                  <p key={article.date}>{article.date}:</p>
+                  <p key={post.datePublished}>{post.datePublished}:</p>
                   &nbsp;
                   <Link
-                    href={article.link}
+                    href={`/papers/${post.slug}`}
                     target="blank"
                     rel="noopener noreferrer"
                   >
                     <div className="w-72 md:w-max">
                       <p
                         className="break-words underline hover:decoration-highlightColor leading-relaxed"
-                        key={article.title}
+                        key={post.title}
                       >
-                        {article.title}
+                        {post.title}
                       </p>
                     </div>
                   </Link>
@@ -104,29 +101,26 @@ const Home: NextPage = () => {
             {Experiences.map((experience, i) => {
               return (
                 <div className="flex flex-row p-2 text-base md:text-sm" key={i}>
-                  <div className="w-44">
-                    <Link
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href={experience.link}
-                      key={experience.link}
-                    >
-                      <p
-                        className="underline hover:decoration-highlightColor font-bold"
-                        key={experience.title}
-                      >
-                        {experience.title}:
-                      </p>
-                    </Link>
-                  </div>
-                  <div className="w-72 md:w-max">
+                  <Link
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={experience.link}
+                    key={experience.link}
+                  >
                     <p
-                      className="break-words leading-relaxed"
-                      key={experience.description}
+                      className="underline hover:decoration-highlightColor font-bold"
+                      key={experience.title}
                     >
-                      {experience.description}
+                      {experience.title}:
                     </p>
-                  </div>
+                  </Link>
+                  &nbsp;
+                  <p
+                    className="break-words leading-relaxed"
+                    key={experience.description}
+                  >
+                    {experience.description}
+                  </p>
                 </div>
               );
             })}
@@ -140,5 +134,35 @@ const Home: NextPage = () => {
     </div>
   );
 };
+
+export async function getStaticProps() {
+  const { data } = await client.query({
+    query: gql`
+      query {
+        posts {
+          id
+          title
+          datePublished
+          slug
+          content {
+            html
+          }
+          author {
+            name
+            avatar {
+              url
+            }
+          }
+        }
+      }
+    `,
+  });
+  const { posts } = data;
+  return {
+    props: {
+      posts,
+    },
+  };
+}
 
 export default Home;
