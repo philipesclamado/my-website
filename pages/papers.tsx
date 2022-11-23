@@ -6,10 +6,13 @@ import { gql } from "@apollo/client";
 
 const Papers: NextPage = ({ posts }: any) => {
   return (
-    <div className="py-8 w-96 md:py-16 md:w-max">
+    <div className="py-0 md:py-16 w-full md:w-[48rem] mx-auto px-4">
       {posts.map((post: any, i: any) => {
         return (
-          <div className="flex flex-row p-2 text-base md:text-sm" key={i}>
+          <div
+            className="flex flex-col md:flex-row p-2 text-base md:text-sm"
+            key={i}
+          >
             <p key={post.datePublished} className="text-subText">
               {post.datePublished}:
             </p>

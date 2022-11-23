@@ -23,20 +23,20 @@ const Home: NextPage = ({ posts }: any) => {
             <h1 className="text-xl font-semibold mt-12 mb-4">Papers</h1>
             {posts.map((post: any, i: any) => {
               return (
-                <div className="flex flex-row p-2 text-base md:text-sm" key={i}>
+                <div
+                  className="flex flex-col md:flex-row p-2 text-base md:text-sm"
+                  key={i}
+                >
                   <p key={post.datePublished} className="text-subText">
-                    {post.datePublished}:
+                    {post.datePublished}:&nbsp;
                   </p>
-                  &nbsp;
                   <Link href={`/papers/${post.slug}`}>
-                    <div className="w-72 md:w-max">
-                      <p
-                        className="break-words underline hover:decoration-highlightColor leading-relaxed"
-                        key={post.title}
-                      >
-                        {post.title}
-                      </p>
-                    </div>
+                    <p
+                      className="break-words underline hover:decoration-highlightColor leading-relaxed"
+                      key={post.title}
+                    >
+                      {post.title}
+                    </p>
                   </Link>
                 </div>
               );
@@ -46,28 +46,20 @@ const Home: NextPage = ({ posts }: any) => {
             <h1 className="text-xl font-semibold mt-12 mb-4">Projects</h1>
             {Projects.map((project, i) => {
               return (
-                <div className="flex flex-row p-2 text-base md:text-sm" key={i}>
-                  <Link
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={project.link}
-                    key={project.link}
-                  >
-                    <p
+                <ul className="flex flex-row p-2 text-base md:text-sm" key={i}>
+                  <li>
+                    <Link
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={project.link}
+                      key={project.link}
                       className="underline hover:decoration-highlightColor font-bold"
-                      key={project.title}
                     >
-                      {project.title}:
-                    </p>
-                  </Link>
-                  &nbsp;
-                  <p
-                    className="text-subText break-words leading-relaxed"
-                    key={project.description}
-                  >
-                    {project.description}
-                  </p>
-                </div>
+                      {project.title}
+                    </Link>
+                    :&nbsp;{project.description}
+                  </li>
+                </ul>
               );
             })}
           </section>

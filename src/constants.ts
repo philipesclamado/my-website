@@ -10,13 +10,19 @@ export const Projects = [
   {
     title: "USV",
     description: "Unmanned Surface Vehicle",
-    link: "https://github.com/UVic-Environmental-Engineering-Club",
+    link: "https://github.com/UVic-Environmental-Engineering-Club/USV-Pi/wiki/Project-Structure",
   },
   {
     title: "Doppler Velocity Log",
     description:
       "an acoustic sensor that estimates velocity relative to the sea bottom",
     link: "https://github.com/philipesclamado/doppler-velocity-log",
+  },
+  {
+    title: "Inertial Measurement Unit",
+    description:
+      "an electronic device that measures and reports a body's specific force, angular rate, and sometimes the orientation of the body",
+    link: "/",
   },
 ];
 

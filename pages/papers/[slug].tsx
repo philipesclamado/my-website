@@ -6,7 +6,7 @@ import { Footer } from "../../src/components/organisms";
 
 export default function Paper({ post }: any) {
   return (
-    <div className="py-8 w-60 md:py-16 md:w-max">
+    <div className="py-0 md:py-16 w-full md:w-[48rem] mx-auto px-4">
       <article>
         <header>
           <h1 className="font-bold text-xl">{post.title}</h1>
@@ -14,7 +14,7 @@ export default function Paper({ post }: any) {
             <time className="text-sm">{post.datePublished}</time>
             <div className="border-l-2 border-subText h-4" />
             <FaTag />
-            <div className="text-sm"></div>
+            <div className="text-sm">{post.tags.name}</div>
           </div>
         </header>
         <div dangerouslySetInnerHTML={{ __html: post.content.html }} />
@@ -52,6 +52,10 @@ export async function getStaticProps({ params }: any) {
           title
           datePublished
           slug
+          tags {
+            name
+            slug
+          }
           content {
             html
           }
