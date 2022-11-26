@@ -3,10 +3,11 @@ import Link from "next/link";
 import { Footer } from "../src/components/organisms";
 import client from "../apolloClient";
 import { gql } from "@apollo/client";
+import { BaseLayout } from "../src/Layout/BaseLayout";
 
 const Papers: NextPage = ({ posts }: any) => {
   return (
-    <div className="py-0 md:py-16 w-full md:w-[48rem] mx-auto px-4">
+    <BaseLayout>
       {posts.map((post: any, i: any) => {
         return (
           <div
@@ -30,8 +31,7 @@ const Papers: NextPage = ({ posts }: any) => {
           </div>
         );
       })}
-      <Footer />
-    </div>
+    </BaseLayout>
   );
 };
 
