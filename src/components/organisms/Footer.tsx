@@ -5,7 +5,10 @@ export const Footer = () => {
   return (
     <footer className="flex flex-col md:flex-row justify-between items-center text-xs mt-14">
       <div>Copyright &copy; 2022 Philip Esclamado</div>
-      <NavBar className="ml-4 underline space-x-7" />
+      <NavBar
+        navStyle="ml-4 underline space-x-6"
+        borderStyle="border-[0.5px] border-solid border-black"
+      />
     </footer>
   );
 };

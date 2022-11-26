@@ -1,20 +1,26 @@
 import classNames from "classnames";
-import { NavMap } from "../../constants";
 import { NavLink } from "../atom";
 
 interface NavBarProps {
-  className?: string;
+  navStyle?: string;
+  borderStyle?: string;
 }
 
-export const NavBar = ({ className }: NavBarProps) => {
+export const NavBar = ({ navStyle, borderStyle }: NavBarProps) => {
   return (
     <div id="nav">
-      <ul className={classNames(className, "flex", "flex-row")}>
-        {NavMap.map((nav, i) => (
-          <li key={i}>
-            <NavLink name={nav.name} link={nav.link} />
-          </li>
-        ))}
+      <ul className={classNames(navStyle, "flex", "flex-row")}>
+        <li>
+          <NavLink name="Home" link="/" />
+        </li>
+        <div className={classNames("border", borderStyle)} />
+        <li>
+          <NavLink name="Papers" link="/" />
+        </li>
+        <div className={classNames("border", borderStyle)} />
+        <li>
+          <NavLink name="Projects" link="/" />
+        </li>
       </ul>
     </div>
   );

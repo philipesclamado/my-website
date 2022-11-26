@@ -11,7 +11,10 @@ export const Header = () => {
       </Link>
       <div className="ml-20 mt-1">
         <h1 className="text-xl font-semibold sm:text-2xl">{CompanyName}</h1>
-        <NavBar className="text-sm space-x-5 md:space-x-10" />
+        <NavBar
+          navStyle="text-sm space-x-5 md:space-x-4"
+          borderStyle="border-dashed border-highlightColor"
+        />
       </div>
     </header>
   );
