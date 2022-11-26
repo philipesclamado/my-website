@@ -15,11 +15,11 @@ export const NavBar = ({ navStyle, borderStyle }: NavBarProps) => {
         </li>
         <div className={classNames("border", borderStyle)} />
         <li>
-          <NavLink name="Papers" link="/" />
+          <NavLink name="Papers" link="/papers" />
         </li>
         <div className={classNames("border", borderStyle)} />
         <li>
-          <NavLink name="Projects" link="/" />
+          <NavLink name="Projects" link="/#projects" />
         </li>
       </ul>
     </div>
