@@ -12,9 +12,9 @@ export default function Paper({ post }: any) {
         <article>
           <header>
             <h1 className="font-bold text-xl">{post.title}</h1>
-            <div className="flex flex-row items-center space-x-2 mb-4 text-subText">
+            <div className="flex flex-row items-center space-x-2 mb-4 text-subtextColor">
               <time className="text-sm">{post.datePublished}</time>
-              <div className="border-l-2 border-subText h-4" />
+              <div className="border-l-2 border-subtextColor h-4" />
               <FaTag />
               <div className="text-sm">{post.tags.name}</div>
             </div>

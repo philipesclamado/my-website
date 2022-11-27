@@ -8,6 +8,7 @@ export const Footer = () => {
       <NavBar
         navStyle="ml-4 underline space-x-6"
         borderStyle="border-[0.5px] border-solid border-black"
+        hoverStyle="hover:text-subtextColor hover:decoration-black"
       />
     </footer>
   );

@@ -14,6 +14,7 @@ export const Header = () => {
         <NavBar
           navStyle="text-sm space-x-5 md:space-x-4"
           borderStyle="border-dashed border-highlightColor"
+          hoverStyle="hover:underline decoration-highlightColor"
         />
       </div>
     </header>

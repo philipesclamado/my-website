@@ -27,7 +27,7 @@ const Home: NextPage = ({ posts }: any) => {
                   className="flex flex-col md:flex-row p-2 text-base md:text-sm"
                   key={i}
                 >
-                  <p key={post.datePublished} className="text-subText">
+                  <p key={post.datePublished} className="text-subtextColor">
                     {post.datePublished}:&nbsp;
                   </p>
                   <Link href={`/papers/${post.slug}`}>

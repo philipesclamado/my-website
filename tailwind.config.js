@@ -5,7 +5,7 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: { colors: { highlightColor: "#FCB814", subText: "#8C8C8C" } },
+    extend: { colors: { highlightColor: "#FCB814", subtextColor: "#8C8C8C" } },
   },
   plugins: [],
 };
