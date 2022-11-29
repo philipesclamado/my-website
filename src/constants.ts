@@ -9,7 +9,8 @@ export const CachedThoughts = [
 export const Projects = [
   {
     title: "USV",
-    description: "Unmanned Surface Vehicle",
+    description:
+      "an Unmanned Surface Vehicle that filter microplastics in the ocean using microbubble as method of filtration",
     link: "https://github.com/UVic-Environmental-Engineering-Club/USV-Pi/wiki/Project-Structure",
   },
   {
