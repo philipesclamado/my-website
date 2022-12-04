@@ -185,6 +185,14 @@
   dependencies:
     tslib "^2.4.0"
 
+"@szhsin/react-menu@^3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@szhsin/react-menu/-/react-menu-3.3.0.tgz#66b921b31938a665b665f80e24d9ca2800360c45"
+  integrity sha512-GZfPLey2ZSVDaRtALuqH611cSM8QBujztYqLDqrqbWkTCwXrdob9G8PaBapBR/5hyW6dqDKJzFfcthZE3/iMpg==
+  dependencies:
+    prop-types "^15.7.2"
+    react-transition-state "^1.1.5"
+
 "@types/json5@^0.0.29":
   version "0.0.29"
   resolved "https://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz"
@@ -1758,6 +1766,11 @@ react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+
+react-transition-state@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/react-transition-state/-/react-transition-state-1.1.5.tgz#22accee21d0011b1d0245be24b6262ae67f494c3"
+  integrity sha512-ITY2mZqc2dWG2eitJkYNdcSFW8aKeOlkL2A/vowRrLL8GH3J6Re/SpD/BLvQzrVOTqjsP0b5S9N10vgNNzwMUQ==
 
 react@18.2.0:
   version "18.2.0"
