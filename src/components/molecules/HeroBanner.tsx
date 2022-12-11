@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { FaEnvelope, FaGithub } from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 import { CachedThoughts } from "../../constants";
 
 export const HeroBanner = () => {
@@ -24,6 +24,14 @@ export const HeroBanner = () => {
           <FaGithub className="h-5 w-5 fill-current hover:text-highlightColor hover:cursor-pointer" />
         </Link>
         ,&nbsp;
+        <Link
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.linkedin.com/in/philip-esclamado-94541425a"
+        >
+          <FaLinkedin className="h-5 w-5 fill-current hover:text-highlightColor hover:cursor-pointer" />
+        </Link>
+        ,&nbsp;and&nbsp;,
         <Link
           target="_blank"
           rel="noopener noreferrer"
