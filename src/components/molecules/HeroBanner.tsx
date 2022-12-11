@@ -31,7 +31,7 @@ export const HeroBanner = () => {
         >
           <FaLinkedin className="h-5 w-5 fill-current hover:text-highlightColor hover:cursor-pointer" />
         </Link>
-        ,&nbsp;and&nbsp;,
+        ,&nbsp;and,&nbsp;
         <Link
           target="_blank"
           rel="noopener noreferrer"
