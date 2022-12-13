@@ -27,7 +27,7 @@ export const HeroBanner = () => {
         <Link
           target="_blank"
           rel="noopener noreferrer"
-          href="https://www.linkedin.com/in/philip-esclamado-94541425a"
+          href="https://www.linkedin.com/in/philipesclamado"
         >
           <FaLinkedin className="h-5 w-5 fill-current hover:text-highlightColor hover:cursor-pointer" />
         </Link>
