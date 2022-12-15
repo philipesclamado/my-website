@@ -20,6 +20,9 @@ const Home: NextPage = ({ posts }: any) => {
         <meta name="description" content="Home for thoughts" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="keywords" content="Philip Esclamado" />
+        <meta property="og:title" content="Philip Esclamado" />
+        <meta property="og:url" content="https://philipesclamado.ca" />
+        <meta property="og:type" content="website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
