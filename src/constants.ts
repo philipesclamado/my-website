@@ -23,7 +23,7 @@ export const Projects = [
     title: "Inertial Measurement Unit",
     description:
       "an electronic device that measures and reports a body's specific force, angular rate, and sometimes the orientation of the body",
-    link: "/",
+    link: "https://github.com/philipesclamado/vertical-reference-unit",
   },
 ];
 
