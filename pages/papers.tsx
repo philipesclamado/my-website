@@ -1,6 +1,5 @@
 import { NextPage } from "next";
 import Link from "next/link";
-import { Footer } from "../src/components/organisms";
 import client from "../apolloClient";
 import { gql } from "@apollo/client";
 import { BaseLayout } from "../src/Layout/BaseLayout";
