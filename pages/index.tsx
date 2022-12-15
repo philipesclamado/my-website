@@ -12,8 +12,14 @@ const Home: NextPage = ({ posts }: any) => {
     <div>
       <Head>
         <title>Philip Esclamado</title>
+        <link
+          rel="canonical"
+          href="https://philipesclamado.ca"
+          key="canonical"
+        />
         <meta name="description" content="Home for thoughts" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="keywords" content="Philip Esclamado" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
