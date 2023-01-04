@@ -89,7 +89,13 @@ export async function getStaticProps() {
           datePublished
           slug
           content {
-            html
+            json
+            references {
+              __typename
+              ... on Asset {
+                url
+              }
+            }
           }
           author {
             name

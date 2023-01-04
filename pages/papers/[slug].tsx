@@ -3,6 +3,8 @@ import React from "react";
 import client from "../../apolloClient";
 import { FaTag } from "react-icons/fa";
 import { Footer } from "../../src/components/organisms";
+import { RichText } from "@graphcms/rich-text-react-renderer";
+import Image from "next/image";
 
 export default function Paper({ post }: any) {
   return (
@@ -19,7 +21,29 @@ export default function Paper({ post }: any) {
               <div className="text-sm">{post.tags.name}</div>
             </div>
           </header>
-          <div dangerouslySetInnerHTML={{ __html: post.content.html }} />
+          {/* <div dangerouslySetInnerHTML={{ __html: post.content.html }} /> */}
+          <RichText
+            content={post.content.json.children}
+            references={post.content.references}
+            renderers={{
+              p: ({ children }) => (
+                <div>
+                  <p className="break-normal">{children}</p>
+                  <br />
+                </div>
+              ),
+              bold: ({ children }) => <strong>{children}</strong>,
+              h3: ({ children }) => (
+                <h3 className="text-xl font-semibold">{children}</h3>
+              ),
+              h4: ({ children }) => (
+                <h4 className="text-md font-semibold">{children}</h4>
+              ),
+              img: ({ src, altText, height, width }: any) => (
+                <Image src={src} alt={altText} height={height} width={width} />
+              ),
+            }}
+          />
         </article>
         <Footer />
       </div>
@@ -60,7 +84,15 @@ export async function getStaticProps({ params }: any) {
             slug
           }
           content {
-            html
+            json
+            references {
+              __typename
+              ... on Asset {
+                url
+                id
+                mimeType
+              }
+            }
           }
           author {
             name
