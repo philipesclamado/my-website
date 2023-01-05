@@ -1,5 +1,4 @@
 import { gql } from "@apollo/client";
-import React from "react";
 import client from "../../apolloClient";
 import { FaTag } from "react-icons/fa";
 import { Footer } from "../../src/components/organisms";
@@ -18,21 +17,40 @@ export default function Paper({ post }: any) {
               <time className="text-sm">{post.datePublished}</time>
               <div className="border-l-2 border-subtextColor h-4" />
               <FaTag />
-              {post.tags.map((tag: any) => {
-                return <div>{tag.name}</div>;
+              {post.tags.map((tag: any, i: any) => {
+                return (
+                  <p className="text-sm" key={i}>
+                    {tag.name}
+                  </p>
+                );
               })}
-              <div className="text-sm">{post.tags.name}</div>
             </div>
           </header>
           <RichText
             content={post.content.json}
             references={post.content.references}
             renderers={{
+              embed: {
+                Label: ({ description }) => {
+                  return (
+                    <span className="text-subtextColor text-sm text-center">
+                      {description}
+                    </span>
+                  );
+                },
+                Asset: ({ src, altText, height, width }) => {
+                  return (
+                    <Image
+                      src={src}
+                      alt={altText}
+                      height={height}
+                      width={width}
+                    />
+                  );
+                },
+              },
               p: ({ children }) => (
-                <div>
-                  <p className="break-normal item-body">{children}</p>
-                  <br />
-                </div>
+                <p className="break-normal item-body">{children}</p>
               ),
               bold: ({ children }) => (
                 <strong className="font-bold">{children}</strong>
@@ -42,16 +60,6 @@ export default function Paper({ post }: any) {
               ),
               h4: ({ children }) => (
                 <h4 className="text-md font-semibold">{children}</h4>
-              ),
-              img: ({ src, altText, height, width }: any) => (
-                <div className="content flex">
-                  <Image
-                    src={src}
-                    alt={altText}
-                    height={height}
-                    width={width}
-                  />
-                </div>
               ),
             }}
           />
@@ -88,6 +96,7 @@ export async function getStaticProps({ params }: any) {
           title
           datePublished
           slug
+          id
           tags {
             name
             slug
@@ -101,10 +110,17 @@ export async function getStaticProps({ params }: any) {
                 id
                 mimeType
               }
+              ... on Label {
+                description
+                id
+              }
             }
           }
           author {
             name
+            avatar {
+              url
+            }
           }
         }
       }

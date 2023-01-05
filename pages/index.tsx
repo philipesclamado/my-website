@@ -87,6 +87,7 @@ export async function getStaticProps() {
           title
           datePublished
           slug
+          id
           tags {
             name
             slug
@@ -97,11 +98,20 @@ export async function getStaticProps() {
               __typename
               ... on Asset {
                 url
+                id
+                mimeType
+              }
+              ... on Label {
+                description
+                id
               }
             }
           }
           author {
             name
+            avatar {
+              url
+            }
           }
         }
       }
