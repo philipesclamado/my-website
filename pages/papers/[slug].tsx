@@ -33,7 +33,7 @@ export default function Paper({ post }: any) {
               embed: {
                 Label: ({ description }) => {
                   return (
-                    <span className="text-subtextColor text-sm text-center">
+                    <span className="flex justify-center text-subtextColor ">
                       {description}
                     </span>
                   );
@@ -50,16 +50,10 @@ export default function Paper({ post }: any) {
                 },
               },
               p: ({ children }) => (
-                <p className="break-normal item-body">{children}</p>
-              ),
-              bold: ({ children }) => (
-                <strong className="font-bold">{children}</strong>
-              ),
-              h3: ({ children }) => (
-                <h3 className="text-xl font-semibold">{children}</h3>
-              ),
-              h4: ({ children }) => (
-                <h4 className="text-md font-semibold">{children}</h4>
+                <div>
+                  <p className="break-normal item-body text-sm">{children}</p>
+                  <br />
+                </div>
               ),
             }}
           />
