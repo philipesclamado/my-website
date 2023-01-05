@@ -18,21 +18,25 @@ export default function Paper({ post }: any) {
               <time className="text-sm">{post.datePublished}</time>
               <div className="border-l-2 border-subtextColor h-4" />
               <FaTag />
+              {post.tags.map((tag: any) => {
+                return <div>{tag.name}</div>;
+              })}
               <div className="text-sm">{post.tags.name}</div>
             </div>
           </header>
-          {/* <div dangerouslySetInnerHTML={{ __html: post.content.html }} /> */}
           <RichText
-            content={post.content.json.children}
+            content={post.content.json}
             references={post.content.references}
             renderers={{
               p: ({ children }) => (
                 <div>
-                  <p className="break-normal">{children}</p>
+                  <p className="break-normal item-body">{children}</p>
                   <br />
                 </div>
               ),
-              bold: ({ children }) => <strong>{children}</strong>,
+              bold: ({ children }) => (
+                <strong className="font-bold">{children}</strong>
+              ),
               h3: ({ children }) => (
                 <h3 className="text-xl font-semibold">{children}</h3>
               ),
@@ -40,7 +44,14 @@ export default function Paper({ post }: any) {
                 <h4 className="text-md font-semibold">{children}</h4>
               ),
               img: ({ src, altText, height, width }: any) => (
-                <Image src={src} alt={altText} height={height} width={width} />
+                <div className="content flex">
+                  <Image
+                    src={src}
+                    alt={altText}
+                    height={height}
+                    width={width}
+                  />
+                </div>
               ),
             }}
           />
@@ -65,7 +76,6 @@ export async function getStaticPaths() {
   const paths = posts.map((post: any) => ({
     params: { slug: post.slug.toString() },
   }));
-  console.log(paths);
   return { paths, fallback: false };
 }
 
@@ -75,7 +85,6 @@ export async function getStaticProps({ params }: any) {
     query: gql`
       query Post($slug: String!) {
         posts(where: { slug: $slug }) {
-          id
           title
           datePublished
           slug
@@ -96,9 +105,6 @@ export async function getStaticProps({ params }: any) {
           }
           author {
             name
-            avatar {
-              url
-            }
           }
         }
       }

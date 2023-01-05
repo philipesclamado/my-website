@@ -84,10 +84,13 @@ export async function getStaticProps() {
     query: gql`
       query {
         posts {
-          id
           title
           datePublished
           slug
+          tags {
+            name
+            slug
+          }
           content {
             json
             references {
@@ -99,9 +102,6 @@ export async function getStaticProps() {
           }
           author {
             name
-            avatar {
-              url
-            }
           }
         }
       }
