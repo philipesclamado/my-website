@@ -4,6 +4,18 @@ import { FaTag } from "react-icons/fa";
 import { Footer } from "../../src/components/organisms";
 import { RichText } from "@graphcms/rich-text-react-renderer";
 import Image from "next/image";
+import { EmbedProps, ElementNode } from "@graphcms/rich-text-types";
+
+type Label = {
+  description: string;
+};
+
+type Asset = {
+  url: string;
+  altText: string;
+  height: number;
+  width: number;
+};
 
 export default function Paper({ post }: any) {
   return (
@@ -30,28 +42,32 @@ export default function Paper({ post }: any) {
             content={post.content.json}
             references={post.content.references}
             renderers={{
+              Asset: {
+                image: ({ url, altText, height, width }: EmbedProps<Asset>) => (
+                  <span className="flex justify-center">
+                    <img
+                      src={url}
+                      alt={altText}
+                      height={height}
+                      width={width}
+                    />
+                  </span>
+                ),
+              },
               embed: {
-                Label: ({ description }) => {
+                Label: ({ description }: EmbedProps<Label>) => {
                   return (
                     <span className="flex justify-center text-subtextColor ">
                       {description}
                     </span>
                   );
                 },
-                Asset: ({ src, altText, height, width }) => {
-                  return (
-                    <Image
-                      src={src}
-                      alt={altText}
-                      height={height}
-                      width={width}
-                    />
-                  );
-                },
               },
               p: ({ children }) => (
                 <div>
-                  <p className="break-normal item-body text-sm">{children}</p>
+                  <p className="break-normal text-sm text-justify">
+                    {children}
+                  </p>
                   <br />
                 </div>
               ),
@@ -101,6 +117,8 @@ export async function getStaticProps({ params }: any) {
               __typename
               ... on Asset {
                 url
+                height
+                width
                 id
                 mimeType
               }

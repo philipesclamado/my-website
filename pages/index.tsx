@@ -6,6 +6,7 @@ import { HeroBanner } from "../src/components/molecules";
 import { Projects } from "../src/constants";
 import client from "../apolloClient";
 import { gql } from "@apollo/client";
+import Image from "next/image";
 
 const Home: NextPage = ({ posts }: any) => {
   return (
@@ -17,6 +18,7 @@ const Home: NextPage = ({ posts }: any) => {
           href="https://philipesclamado.ca"
           key="canonical"
         />
+        <meta charSet="UTF-8"></meta>
         <meta name="description" content="Home for thoughts" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="keywords" content="Philip Esclamado" />
