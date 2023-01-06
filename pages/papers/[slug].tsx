@@ -3,19 +3,6 @@ import client from "../../apolloClient";
 import { FaTag } from "react-icons/fa";
 import { Footer } from "../../src/components/organisms";
 import { RichText } from "@graphcms/rich-text-react-renderer";
-import Image from "next/image";
-import { EmbedProps, ElementNode } from "@graphcms/rich-text-types";
-
-type Label = {
-  description: string;
-};
-
-type Asset = {
-  url: string;
-  altText: string;
-  height: number;
-  width: number;
-};
 
 export default function Paper({ post }: any) {
   return (
@@ -43,7 +30,7 @@ export default function Paper({ post }: any) {
             references={post.content.references}
             renderers={{
               Asset: {
-                image: ({ url, altText, height, width }: EmbedProps<Asset>) => (
+                image: ({ url, altText, height, width }) => (
                   <span className="flex justify-center">
                     <img
                       src={url}
@@ -55,22 +42,49 @@ export default function Paper({ post }: any) {
                 ),
               },
               embed: {
-                Label: ({ description }: EmbedProps<Label>) => {
+                Label: ({ description }) => {
                   return (
                     <span className="flex justify-center text-subtextColor ">
                       {description}
                     </span>
                   );
                 },
+                Equation: ({ eqn }) => {
+                  return (
+                    <span className="flex justify-center text-base ">
+                      {eqn}
+                    </span>
+                  );
+                },
               },
               p: ({ children }) => (
                 <div>
-                  <p className="break-normal text-sm text-justify">
-                    {children}
-                  </p>
+                  <p className="break-normal text-sm">{children}</p>
                   <br />
                 </div>
               ),
+              a: ({ children, href, openInNewTab }) => (
+                <a
+                  href={href}
+                  target={openInNewTab ? "_blank" : "_self"}
+                  style={{ color: "green" }}
+                  rel="noreferrer"
+                  className="break-all"
+                >
+                  {children}
+                </a>
+              ),
+
+              bold: ({ children }) => (
+                <strong className="font-bold text-base">{children}</strong>
+              ),
+              code_block: ({ children }) => {
+                return (
+                  <pre>
+                    <code>{children}</code>
+                  </pre>
+                );
+              },
             }}
           />
         </article>
@@ -124,6 +138,10 @@ export async function getStaticProps({ params }: any) {
               }
               ... on Label {
                 description
+                id
+              }
+              ... on Equation {
+                eqn
                 id
               }
             }

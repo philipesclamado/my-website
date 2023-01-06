@@ -6,7 +6,6 @@ import { HeroBanner } from "../src/components/molecules";
 import { Projects } from "../src/constants";
 import client from "../apolloClient";
 import { gql } from "@apollo/client";
-import Image from "next/image";
 
 const Home: NextPage = ({ posts }: any) => {
   return (
