@@ -127,7 +127,7 @@ export async function getStaticProps({ params }: any) {
   const { data } = await client.query({
     query: gql`
       query Post($slug: String!) {
-        posts(where: { slug: $slug }) {
+        posts(orderBy: datePublished_DESC, where: { slug: $slug }) {
           title
           datePublished
           slug
