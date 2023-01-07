@@ -18,9 +18,9 @@ export default function Paper({ post }: any) {
               <FaTag />
               {post.tags.map((tag: any, i: any) => {
                 return (
-                  <p className="text-sm" key={i}>
+                  <span className="text-sm" key={i}>
                     {tag.name}
-                  </p>
+                  </span>
                 );
               })}
             </div>
@@ -80,7 +80,7 @@ export default function Paper({ post }: any) {
               ),
               code_block: ({ children }) => {
                 return (
-                  <pre className="bg-[#f1f1f1] rounded-lg border p-4">
+                  <pre className="bg-[#f1f1f1] rounded-lg border p-4 break-all overflow-auto">
                     <code>{children}</code>
                   </pre>
                 );
