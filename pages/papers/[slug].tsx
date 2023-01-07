@@ -44,7 +44,7 @@ export default function Paper({ post }: any) {
               embed: {
                 Label: ({ description }) => {
                   return (
-                    <span className="flex justify-center text-subtextColor ">
+                    <span className="flex justify-center text-center text-subtextColor break-normal">
                       {description}
                     </span>
                   );
@@ -69,7 +69,7 @@ export default function Paper({ post }: any) {
                   target={openInNewTab ? "_blank" : "_self"}
                   style={{ color: "green" }}
                   rel="noreferrer"
-                  className="break-all"
+                  className="underline break-all"
                 >
                   {children}
                 </a>
@@ -80,11 +80,22 @@ export default function Paper({ post }: any) {
               ),
               code_block: ({ children }) => {
                 return (
-                  <pre>
+                  <pre className="bg-[#f1f1f1] rounded-lg border p-4">
                     <code>{children}</code>
                   </pre>
                 );
               },
+              blockquote: ({ children }) => (
+                <blockquote
+                  style={{
+                    paddingLeft: "16px",
+                    borderLeft: "4px solid blue",
+                    fontSize: "26px",
+                  }}
+                >
+                  {children}
+                </blockquote>
+              ),
             }}
           />
         </article>
