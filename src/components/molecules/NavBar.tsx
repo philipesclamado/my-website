@@ -5,11 +5,17 @@ interface NavBarProps {
   navStyle?: string;
   borderStyle?: string;
   hoverStyle?: string;
+  className?: string;
 }
 
-export const NavBar = ({ navStyle, borderStyle, hoverStyle }: NavBarProps) => {
+export const NavBar = ({
+  navStyle,
+  borderStyle,
+  hoverStyle,
+  className,
+}: NavBarProps) => {
   return (
-    <div id="nav">
+    <div id="nav" className={classNames(className)}>
       <ul className={classNames(navStyle, "flex", "flex-row")}>
         <li>
           <NavLink name="Home" link="/" className={classNames(hoverStyle)} />
