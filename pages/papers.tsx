@@ -39,19 +39,9 @@ export async function getStaticProps() {
     query: gql`
       query {
         posts(orderBy: datePublished_DESC) {
-          id
           title
           datePublished
           slug
-          content {
-            html
-          }
-          author {
-            name
-            avatar {
-              url
-            }
-          }
         }
       }
     `,

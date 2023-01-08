@@ -63,6 +63,13 @@ export default function Paper({ post }: any) {
                   <br />
                 </div>
               ),
+              ul: ({ children }) => (
+                <ul className="list-disc list-inside text-sm">{children}</ul>
+              ),
+              ol: ({ children }) => (
+                <ol className="list-decimal list-inside text-sm">{children}</ol>
+              ),
+              li: ({ children }) => <li>{children}</li>,
               a: ({ children, href, openInNewTab }) => (
                 <a
                   href={href}
@@ -80,9 +87,12 @@ export default function Paper({ post }: any) {
               ),
               code_block: ({ children }) => {
                 return (
-                  <pre className="bg-[#f1f1f1] rounded-lg border p-4 break-all overflow-auto">
-                    <code>{children}</code>
-                  </pre>
+                  <div>
+                    <pre className="bg-[#f1f1f1] rounded-lg border p-4 break-all overflow-auto">
+                      <code>{children}</code>
+                    </pre>
+                    <br />
+                  </div>
                 );
               },
               blockquote: ({ children }) => (
@@ -155,12 +165,6 @@ export async function getStaticProps({ params }: any) {
                 eqn
                 id
               }
-            }
-          }
-          author {
-            name
-            avatar {
-              url
             }
           }
         }

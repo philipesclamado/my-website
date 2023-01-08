@@ -88,32 +88,6 @@ export async function getStaticProps() {
           datePublished
           title
           slug
-          id
-          tags {
-            name
-            slug
-          }
-          content {
-            json
-            references {
-              __typename
-              ... on Asset {
-                url
-                id
-                mimeType
-              }
-              ... on Label {
-                description
-                id
-              }
-            }
-          }
-          author {
-            name
-            avatar {
-              url
-            }
-          }
         }
       }
     `,
