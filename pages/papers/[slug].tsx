@@ -95,17 +95,6 @@ export default function Paper({ post }: any) {
                   </div>
                 );
               },
-              blockquote: ({ children }) => (
-                <blockquote
-                  style={{
-                    paddingLeft: "16px",
-                    borderLeft: "4px solid blue",
-                    fontSize: "26px",
-                  }}
-                >
-                  {children}
-                </blockquote>
-              ),
             }}
           />
         </article>
