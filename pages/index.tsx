@@ -30,6 +30,7 @@ const Home: NextPage = ({ posts }: any) => {
       <BaseLayout>
         <HeroBanner />
         <main>
+          <Link href="public/papers/test.pdf">test</Link>
           <section id="papers">
             <h1 className="text-xl font-semibold mt-12 mb-4">Papers</h1>
             {posts.map((post: any, i: any) => {
