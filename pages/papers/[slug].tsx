@@ -32,25 +32,21 @@ export default function Paper({ post }: any) {
             references={post.content.references}
             renderers={{
               Asset: {
-                image: ({ url, altText, height, width }) => (
-                  <span className="flex justify-center">
+                image: ({ url, altText, height, width, description }) => (
+                  <span className="flex flex-col items-center">
                     <Image
                       src={url}
                       alt={altText}
                       height={height}
                       width={width}
                     />
+                    <span className="text-subtextColor break-normal">
+                      {description}
+                    </span>
                   </span>
                 ),
               },
               embed: {
-                Label: ({ description }) => {
-                  return (
-                    <span className="flex justify-center text-center text-subtextColor break-normal">
-                      {description}
-                    </span>
-                  );
-                },
                 Equation: ({ eqn }) => {
                   return (
                     <span className="flex justify-center text-base ">
@@ -146,10 +142,7 @@ export async function getStaticProps({ params }: any) {
                 width
                 id
                 mimeType
-              }
-              ... on Label {
                 description
-                id
               }
               ... on Equation {
                 eqn
