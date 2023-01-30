@@ -3,6 +3,8 @@ import client from "../../apolloClient";
 import { FaTag } from "react-icons/fa";
 import { Footer } from "../../src/components/organisms";
 import { RichText } from "@graphcms/rich-text-react-renderer";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Paper({ post }: any) {
   return (
@@ -32,7 +34,7 @@ export default function Paper({ post }: any) {
               Asset: {
                 image: ({ url, altText, height, width }) => (
                   <span className="flex justify-center">
-                    <img
+                    <Image
                       src={url}
                       alt={altText}
                       height={height}
@@ -70,16 +72,15 @@ export default function Paper({ post }: any) {
                 <ol className="list-decimal list-inside text-sm">{children}</ol>
               ),
               li: ({ children }) => <li>{children}</li>,
-              a: ({ children, href, openInNewTab }) => (
-                <a
-                  href={href}
-                  target={openInNewTab ? "_blank" : "_self"}
-                  style={{ color: "green" }}
-                  rel="noreferrer"
-                  className="underline break-all"
+              a: ({ children, href }) => (
+                <Link
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={href!}
+                  className="text-green-700 underline break-all"
                 >
                   {children}
-                </a>
+                </Link>
               ),
 
               bold: ({ children }) => (
