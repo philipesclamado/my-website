@@ -32,19 +32,16 @@ export default function Paper({ post }: any) {
             references={post.content.references}
             renderers={{
               Asset: {
-                image: ({ url, altText, height, width, description }) => (
-                  <span className="flex flex-col items-center">
-                    <Image
-                      src={url}
-                      alt={altText}
-                      height={height}
-                      width={width}
-                    />
-                    <span className="text-subtextColor break-normal">
-                      {description}
+                image: ({ url, height, width, description }) => {
+                  return (
+                    <span className="flex flex-col items-center">
+                      <Image src={url} alt={""} height={height} width={width} />
+                      <span className="text-subtextColor break-normal">
+                        {description}
+                      </span>
                     </span>
-                  </span>
-                ),
+                  );
+                },
               },
               embed: {
                 Equation: ({ eqn }) => {
