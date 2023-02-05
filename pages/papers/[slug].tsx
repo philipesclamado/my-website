@@ -36,7 +36,7 @@ export default function Paper({ post }: any) {
                   return (
                     <span className="flex flex-col items-center">
                       <Image src={url} alt={""} height={height} width={width} />
-                      <span className="text-subtextColor break-normal">
+                      <span className="text-subtextColor break-normal text-xs">
                         {description}
                       </span>
                     </span>
