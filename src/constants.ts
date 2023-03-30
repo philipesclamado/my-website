@@ -14,7 +14,7 @@ export const Projects = [
     link: "https://github.com/UVic-Environmental-Engineering-Club/USV-Pi/wiki/Project-Structure",
   },
   {
-    title: "Hybrid-Propellant Rocket Engine Modelling (aerospace)",
+    title: "Hybrid-Propellant Rocket Engine Modelling (aerospace engineering)",
     description:
       "a hybrid-propellant rocket engine that uses a combination of liquid and solid propellants",
     link: "https://github.com/philipesclamado/hybrid-modelling",
