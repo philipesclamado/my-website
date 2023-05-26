@@ -19,6 +19,12 @@ export const Projects = [
       "a hybrid-propellant rocket engine that uses a combination of liquid and solid propellants",
     link: "https://github.com/philipesclamado/hybrid-modelling",
   },
+  {
+    title: "Underwater Glider Prototype-1 (marine engineering)",
+    description:
+      "a prototype of an underwater glider that uses buoyancy to propel itself",
+    link: "/files/Prototype_1_Vehicle_Systems.pdf",
+  },
 ];
 
 export const NavMap = [
