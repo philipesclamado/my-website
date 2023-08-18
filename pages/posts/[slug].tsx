@@ -6,7 +6,7 @@ import { RichText } from "@graphcms/rich-text-react-renderer";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Paper({ post }: any) {
+export default function Post({ post }: any) {
   return (
     <div>
       <div className="border border-black" />
@@ -120,7 +120,7 @@ export async function getStaticProps({ params }: any) {
   const { data } = await client.query({
     query: gql`
       query Post($slug: String!) {
-        posts(orderBy: datePublished_DESC, where: { slug: $slug }) {
+        posts(where: { slug: $slug }) {
           title
           datePublished
           slug
@@ -154,5 +154,6 @@ export async function getStaticProps({ params }: any) {
   });
   const { posts } = data;
   const post = posts[0];
+  console.log(data);
   return { props: { post }, revalidate: 60 * 60 };
 }

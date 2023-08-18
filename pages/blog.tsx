@@ -4,7 +4,7 @@ import client from "../apolloClient";
 import { gql } from "@apollo/client";
 import { BaseLayout } from "../src/Layout/BaseLayout";
 
-const Papers: NextPage = ({ posts }: any) => {
+const Posts: NextPage = ({ posts }: any) => {
   return (
     <BaseLayout>
       {posts.map((post: any, i: any) => {
@@ -13,11 +13,12 @@ const Papers: NextPage = ({ posts }: any) => {
             className="flex flex-col md:flex-row p-2 text-base md:text-sm"
             key={i}
           >
+            <p>{post.datePublished.year}</p>
             <p key={post.datePublished} className="text-subtextColor">
               {post.datePublished}:
             </p>
             &nbsp;
-            <Link href={`/papers/${post.slug}`}>
+            <Link href={`/posts/${post.slug}`}>
               <div className="w-72 md:w-max">
                 <p
                   className="break-words underline hover:decoration-highlightColor leading-relaxed"
@@ -54,4 +55,4 @@ export async function getStaticProps() {
   };
 }
 
-export default Papers;
+export default Posts;

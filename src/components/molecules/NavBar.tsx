@@ -17,8 +17,8 @@ export const NavBar = ({ navStyle, borderStyle, hoverStyle }: NavBarProps) => {
         <div className={classNames("border", borderStyle)} />
         <li>
           <NavLink
-            name="Papers"
-            link="/papers"
+            name="Blog"
+            link="/blog"
             className={classNames(hoverStyle)}
           />
         </li>

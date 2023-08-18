@@ -30,8 +30,8 @@ const Home: NextPage = ({ posts }: any) => {
       <BaseLayout>
         <HeroBanner />
         <main>
-          <section id="papers">
-            <h1 className="text-xl font-semibold mt-12 mb-4">Papers</h1>
+          <section id="posts">
+            <h1 className="text-xl font-semibold mt-12 mb-4">Blog</h1>
             {posts.map((post: any, i: any) => {
               return (
                 <div
@@ -41,7 +41,7 @@ const Home: NextPage = ({ posts }: any) => {
                   <p key={post.datePublished} className="text-subtextColor">
                     {post.datePublished}:&nbsp;
                   </p>
-                  <Link href={`/papers/${post.slug}`}>
+                  <Link href={`/posts/${post.slug}`}>
                     <p
                       className="break-words underline hover:decoration-highlightColor leading-relaxed"
                       key={post.title}
