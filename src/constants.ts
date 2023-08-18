@@ -27,6 +27,6 @@ export const Projects = [
 
 export const NavMap = [
   { name: "Home", link: "/" },
-  { name: "Papers", link: "/papers" },
+  { name: "Blog", link: "/papers" },
   { name: "Projects", link: "/#projects" },
 ];
