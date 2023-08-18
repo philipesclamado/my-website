@@ -1,7 +1,7 @@
 export const CompanyName = "Philip Esclamado";
 
 export const CachedThoughts = [
-  "- we are beings with engineering opportunities",
+  "- We are beings with engineering opportunities.",
 ];
 
 export const Projects = [
