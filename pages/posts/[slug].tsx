@@ -154,6 +154,6 @@ export async function getStaticProps({ params }: any) {
   });
   const { posts } = data;
   const post = posts[0];
-  console.log(data);
+  //console.log(data);
   return { props: { post }, revalidate: 60 * 60 };
 }
