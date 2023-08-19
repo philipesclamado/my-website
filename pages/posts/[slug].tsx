@@ -5,8 +5,9 @@ import { Footer } from "../../src/components/organisms";
 import { RichText } from "@graphcms/rich-text-react-renderer";
 import Image from "next/image";
 import Link from "next/link";
+import { NextPage } from "next";
 
-export default function Post({ post }: any) {
+const Post: NextPage = ({ post }: any) => {
   return (
     <div>
       <div className="border border-black" />
@@ -18,10 +19,16 @@ export default function Post({ post }: any) {
               <time className="text-sm">{post.datePublished}</time>
               <div className="border-l-2 border-subtextColor h-4" />
               <FaTag />
-              {post.tags.map((tag: any, i: any) => {
+              {post.tags.map((tag: any, i: number) => {
                 return (
                   <span className="text-sm" key={i}>
-                    {tag.name}
+                    <Link
+                      href={`/tags/${tag.slug}`}
+                      className="break-words hover:underline decoration-highlightColor leading-relaxed"
+                    >
+                      {tag.name}
+                    </Link>
+                    {i !== post.tags.length - 1 && <>,</>}
                   </span>
                 );
               })}
@@ -96,7 +103,7 @@ export default function Post({ post }: any) {
       </div>
     </div>
   );
-}
+};
 
 export async function getStaticPaths() {
   const { data } = await client.query({
@@ -115,8 +122,8 @@ export async function getStaticPaths() {
   return { paths, fallback: false };
 }
 
-export async function getStaticProps({ params }: any) {
-  const slug = params.slug as string;
+export async function getStaticProps({ params }: { params: { slug: string } }) {
+  const slug = params.slug;
   const { data } = await client.query({
     query: gql`
       query Post($slug: String!) {
@@ -155,5 +162,7 @@ export async function getStaticProps({ params }: any) {
   const { posts } = data;
   const post = posts[0];
   //console.log(data);
-  return { props: { post }, revalidate: 60 * 60 };
+  return { props: { post }, revalidate: 10 };
 }
+
+export default Post;
