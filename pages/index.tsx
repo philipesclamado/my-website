@@ -18,7 +18,10 @@ const Home: NextPage = ({ posts }: any) => {
           key="canonical"
         />
         <meta charSet="UTF-8"></meta>
-        <meta name="description" content="Home for thoughts" />
+        <meta
+          name="description"
+          content="A home for poorly researched ideas that I find myself repeating a lot anyway"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="keywords" content="Philip Esclamado" />
         <meta property="og:title" content="Philip Esclamado" />
