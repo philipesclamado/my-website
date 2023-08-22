@@ -6,8 +6,19 @@ import { RichText } from "@graphcms/rich-text-react-renderer";
 import Image from "next/image";
 import Link from "next/link";
 import { NextPage } from "next";
+import "katex/dist/katex.min.css";
+import AutoLaTeX, { RenderMathInElementOptions } from "react-autolatex";
 
 const Post: NextPage = ({ post }: any) => {
+  const options: RenderMathInElementOptions = {
+    delimiters: [
+      { left: "$$", right: "$$", display: true },
+      { left: "$", right: "$", display: false },
+    ],
+    errorCallback(msg: string, err: Error) {
+      console.error("[Error]", msg, err);
+    },
+  };
   return (
     <div>
       <div className="border border-black" />
@@ -53,9 +64,12 @@ const Post: NextPage = ({ post }: any) => {
               embed: {
                 Equation: ({ eqn }) => {
                   return (
-                    <span className="flex justify-center text-base ">
+                    <AutoLaTeX
+                      options={options}
+                      className="flex justify-center text-base "
+                    >
                       {eqn}
-                    </span>
+                    </AutoLaTeX>
                   );
                 },
               },
