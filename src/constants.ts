@@ -24,9 +24,3 @@ export const Projects = [
     link: "/files/Prototype_1_Vehicle_Systems.pdf",
   },
 ];
-
-export const NavMap = [
-  { name: "Home", link: "/" },
-  { name: "Blog", link: "/papers" },
-  { name: "Projects", link: "/#projects" },
-];
