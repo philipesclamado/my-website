@@ -1,12 +1,22 @@
-import Link from "next/link";
-import client from "../../apolloClient";
-import { gql } from "@apollo/client";
-import { BaseLayout } from "../../src/Layout/BaseLayout";
 import { NextPage } from "next";
-import { groupPostsByYear } from "../../src/algo";
+import Link from "next/link";
+import client from "../apolloClient";
+import { gql } from "@apollo/client";
+import { BaseLayout } from "../src/Layout/BaseLayout";
 
-const RelatedPost: NextPage<PostProps> = ({ post }) => {
-  const groupedPosts = groupPostsByYear(post);
+const groupPostsByYear = (posts: Post[]) => {
+  return posts.reduce<{ [year: string]: Post[] }>((grouped, post) => {
+    const year = post.datePublished.split("-")[0];
+    if (!grouped[year]) {
+      grouped[year] = [];
+    }
+    grouped[year].push(post);
+    return grouped;
+  }, {});
+};
+
+const PostList: NextPage<{ posts: Post[] }> = ({ posts }) => {
+  const groupedPosts = groupPostsByYear(posts);
   return (
     <BaseLayout>
       {Object.keys(groupedPosts)
@@ -39,47 +49,24 @@ const RelatedPost: NextPage<PostProps> = ({ post }) => {
   );
 };
 
-export async function getStaticPaths() {
+export async function getStaticProps() {
   const { data } = await client.query({
     query: gql`
       query {
-        tags {
+        posts(orderBy: datePublished_DESC) {
+          title
+          datePublished
           slug
         }
       }
     `,
   });
-  const { tags } = data;
+  const { posts } = data;
   return {
-    paths: tags.map((tag: any) => ({
-      params: { slug: tag.slug },
-    })),
-    fallback: false,
+    props: {
+      posts,
+    },
   };
 }
 
-export async function getStaticProps({ params }: { params: { slug: string } }) {
-  const slug = params.slug;
-  const { data } = await client.query({
-    query: gql`
-      query Tag($slug: String!) {
-        tags(where: { slug: $slug }, orderBy: updatedAt_DESC) {
-          posts {
-            ... on Post {
-              title
-              datePublished
-              slug
-            }
-          }
-        }
-      }
-    `,
-    variables: { slug },
-  });
-  //console.log(data);
-  const { posts } = data.tags[0];
-  //console.log(data);
-  return { props: { post: posts }, revalidate: 10 };
-}
-
-export default RelatedPost;
+export default PostList;
