@@ -32,14 +32,12 @@ const PostList: NextPage<{ posts: Post[] }> = ({ posts }) => {
                 <p className="text-subtextColor">{post.datePublished}:</p>
                 &nbsp;
                 <Link href={`/posts/${post.slug}`}>
-                  <div className="w-72 md:w-max">
-                    <p
-                      className="break-words underline hover:decoration-highlightColor leading-relaxed"
-                      key={post.title}
-                    >
-                      {post.title}
-                    </p>
-                  </div>
+                  <p
+                    className="break-words underline hover:decoration-highlightColor leading-relaxed"
+                    key={post.title}
+                  >
+                    {post.title}
+                  </p>
                 </Link>
               </div>
             ))}
