@@ -29,8 +29,7 @@ const PostList: NextPage<{ posts: Post[] }> = ({ posts }) => {
                 className="flex flex-col md:flex-row p-2 text-base md:text-sm"
                 key={index}
               >
-                <p className="text-subtextColor">{post.datePublished}:</p>
-                &nbsp;
+                <p className="text-subtextColor">{post.datePublished}:&nbsp;</p>
                 <Link href={`/posts/${post.slug}`}>
                   <p
                     className="break-words underline hover:decoration-highlightColor leading-relaxed"
