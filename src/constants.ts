@@ -1,7 +1,8 @@
 export const Brand = "Philip Esclamado";
 
 export const CachedThoughts = [
-  "- We are beings with engineering opportunities.",
+  "We are beings with engineering opportunities.",
+  "The only thing in this world that can teach you how to properly live life is living life.",
 ];
 
 export const Projects = [
