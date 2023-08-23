@@ -12,13 +12,11 @@ export const HeroBanner = () => {
   return (
     <div id="about">
       <p className="mt-4 text-base md:text-sm">Some cached thoughts:</p>
-      {CachedThoughts.map((thoughts, i) => {
-        return (
-          <p className="text-base md:text-sm" key={i}>
-            {thoughts}
-          </p>
-        );
-      })}
+      <ul className="list-disc ml-4 text-base md:text-sm">
+        {CachedThoughts.map((thought, index) => (
+          <li key={index}>{thought}</li>
+        ))}
+      </ul>
       <p className="flex flex-row my-4 text-base md:text-sm">
         Find me on&nbsp;
         <Link
