@@ -76,9 +76,9 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
     `,
     variables: { slug },
   });
-  //console.log(data);
+
   const { posts } = data.tags[0];
-  //console.log(data);
+
   return { props: { post: posts }, revalidate: 10 };
 }
 
