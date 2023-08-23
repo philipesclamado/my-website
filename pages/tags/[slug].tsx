@@ -12,15 +12,16 @@ const RelatedPost: NextPage<PostProps> = ({ post }) => {
       {Object.keys(groupedPosts)
         .reverse()
         .map((year) => (
-          <div key={year}>
-            <p className="font-semibold">{year}</p>
+          <div key={year} className="mb-6">
+            <p className="font-semibold mb-2">{year}</p>
             {groupedPosts[year].map((post, index) => (
               <div
-                className="flex flex-col md:flex-row p-2 text-base md:text-sm"
+                className="flex flex-col md:flex-row p-2 text-base md:text-sm border-b border-gray-200 last:border-b-0"
                 key={index}
               >
-                <p className="text-subtextColor">{post.datePublished}:</p>
-                &nbsp;
+                <p className="text-subtextColor mb-2 md:mb-0">
+                  {post.datePublished}:&nbsp;
+                </p>
                 <Link href={`/posts/${post.slug}`}>
                   <div className="w-72 md:w-max">
                     <p
