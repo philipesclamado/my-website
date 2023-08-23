@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { BaseLayout } from "../src/Layout/BaseLayout";
 import { HeroBanner } from "../src/components/molecules";
-import { Projects } from "../src/constants";
+import { Brand, Projects } from "../src/constants";
 import client from "../apolloClient";
 import { gql } from "@apollo/client";
 
@@ -11,7 +11,7 @@ const Home: NextPage = ({ posts }: any) => {
   return (
     <div>
       <Head>
-        <title>Philip Esclamado</title>
+        <title>{Brand}</title>
         <link
           rel="canonical"
           href="https://philipesclamado.ca"
@@ -23,8 +23,8 @@ const Home: NextPage = ({ posts }: any) => {
           content="Student working on autonomous vehicles, human-robot interaction, and machine learning at UVic and beyond."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="keywords" content="Philip Esclamado" />
-        <meta property="og:title" content="Philip Esclamado" />
+        <meta name="keywords" content={`${Brand}`} />
+        <meta property="og:title" content={`${Brand}`} />
         <meta property="og:url" content="https://philipesclamado.ca" />
         <meta property="og:type" content="website" />
         <link rel="icon" href="/favicon.ico" />

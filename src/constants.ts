@@ -1,4 +1,4 @@
-export const CompanyName = "Philip Esclamado";
+export const Brand = "Philip Esclamado";
 
 export const CachedThoughts = [
   "- We are beings with engineering opportunities.",
