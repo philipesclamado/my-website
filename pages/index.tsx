@@ -20,7 +20,7 @@ const Home: NextPage = ({ posts }: any) => {
         <meta charSet="UTF-8"></meta>
         <meta
           name="description"
-          content="student working on autonomous vehicles, human-robot interaction, and machine learning at UVic and beyond."
+          content="Student working on autonomous vehicles, human-robot interaction, and machine learning at UVic and beyond."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="keywords" content="Philip Esclamado" />
