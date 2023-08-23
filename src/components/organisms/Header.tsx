@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CompanyName } from "../../constants";
+import { Brand } from "../../constants";
 import { NavBar } from "../molecules";
 import { Logo } from "../atom";
 
@@ -11,7 +11,7 @@ export const Header = () => {
       </Link>
       <div className="flex md:flex-row ml-20 mt-1">
         <div className="flex flex-col">
-          <h1 className="text-xl font-semibold sm:text-2xl">{CompanyName}</h1>
+          <h1 className="text-xl font-semibold sm:text-2xl">{Brand}</h1>
           <NavBar
             navStyle="text-sm space-x-5 md:space-x-4"
             borderStyle="border-dashed border-highlightColor"
