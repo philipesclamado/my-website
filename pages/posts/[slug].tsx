@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 import client from "../../apolloClient";
-import { FaTag } from "react-icons/fa";
+import { FaTag, FaAngleRight, FaAngleLeft, FaAngleUp } from "react-icons/fa";
 import { Footer } from "../../src/components/organisms";
 import { RichText } from "@graphcms/rich-text-react-renderer";
 import Image from "next/image";
@@ -8,8 +8,29 @@ import Link from "next/link";
 import { NextPage } from "next";
 import "katex/dist/katex.min.css";
 import AutoLaTeX, { RenderMathInElementOptions } from "react-autolatex";
+import { NavBar } from "../../src/components/molecules";
+import { useState } from "react";
 
-const Post: NextPage = ({ post }: any) => {
+const Post: NextPage = ({ post, nextPostSlug, prevPostSlug }: any) => {
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    setTouchStartX(e.touches[0]?.clientX || null);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    const touchEndX = e.changedTouches[0]?.clientX || 0;
+    const deltaX = touchEndX - (touchStartX || 0);
+
+    if (deltaX > 50 && prevPostSlug) {
+      // Swipe right: navigate to the previous post
+      window.location.href = `/posts/${prevPostSlug}`;
+    } else if (deltaX < -50 && nextPostSlug) {
+      // Swipe left: navigate to the next post
+      window.location.href = `/posts/${nextPostSlug}`;
+    }
+  };
+
   const options: RenderMathInElementOptions = {
     delimiters: [
       { left: "$$", right: "$$", display: true },
@@ -20,29 +41,56 @@ const Post: NextPage = ({ post }: any) => {
     },
   };
   return (
-    <div>
+    <div id="top">
       <div className="border border-black" />
+      <NavBar
+        className="hidden md:block absolute top-4 right-4"
+        navStyle="text-sm space-x-5 md:space-x-4"
+        borderStyle="border-dashed border-highlightColor"
+        hoverStyle="hover:underline decoration-highlightColor"
+      />
+      <div
+        className="hidden md:flex flex-row fixed top-12 right-4 space-x-2"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
+        {prevPostSlug && (
+          <Link href={`/posts/${prevPostSlug}`}>
+            <FaAngleLeft className="h-5 w-5 fill-current hover:text-highlightColor hover:cursor-pointer" />
+          </Link>
+        )}
+        {nextPostSlug && (
+          <Link href={`/posts/${nextPostSlug}`}>
+            <FaAngleRight className="h-5 w-5 fill-current hover:text-highlightColor hover:cursor-pointer" />
+          </Link>
+        )}
+        <Link href="#top">
+          <FaAngleUp className="h-5 w-5 fill-current hover:text-highlightColor hover:cursor-pointer" />
+        </Link>
+      </div>
       <div className="w-full md:w-[48rem] mx-auto px-4 py-16">
         <article>
           <header>
             <h1 className="font-bold text-xl">{post.title}</h1>
-            <div className="flex flex-row items-center space-x-2 mb-4 text-subtextColor">
+            <div className="flex flex-col md:flex-row md:items-center md:space-x-2 mb-4 text-subtextColor md:space-y-0 space-y-2">
               <time className="text-sm">{post.datePublished}</time>
-              <div className="border-l-2 border-subtextColor h-4" />
-              <FaTag />
-              {post.tags.map((tag: any, i: number) => {
-                return (
-                  <span className="text-sm" key={i}>
-                    <Link
-                      href={`/tags/${tag.slug}`}
-                      className="break-words hover:underline decoration-highlightColor leading-relaxed"
-                    >
-                      {tag.name}
-                    </Link>
-                    {i !== post.tags.length - 1 && <>,</>}
-                  </span>
-                );
-              })}
+              <div className="hidden md:block border-l-2 border-subtextColor h-4" />
+              <div className="flex flex-row items-center space-x-2">
+                <FaTag />
+                {post.tags.map((tag: any, i: number) => {
+                  return (
+                    <span className="text-sm" key={i}>
+                      <Link
+                        href={`/tags/${tag.slug}`}
+                        className="break-words hover:underline decoration-highlightColor leading-relaxed"
+                      >
+                        {tag.name}
+                      </Link>
+                      {i !== post.tags.length - 1 && <>,</>}
+                    </span>
+                  );
+                })}
+              </div>
             </div>
           </header>
           <RichText
@@ -66,7 +114,7 @@ const Post: NextPage = ({ post }: any) => {
                   return (
                     <AutoLaTeX
                       options={options}
-                      className="flex justify-center text-base "
+                      className="flex justify-center text-base"
                     >
                       {eqn}
                     </AutoLaTeX>
@@ -80,10 +128,10 @@ const Post: NextPage = ({ post }: any) => {
                 </div>
               ),
               ul: ({ children }) => (
-                <ul className="list-disc list-inside text-sm">{children}</ul>
+                <ul className="list-disc text-sm ml-4">{children}</ul>
               ),
               ol: ({ children }) => (
-                <ol className="list-decimal list-inside text-sm">{children}</ol>
+                <ol className="list-decimal text-sm ml-4">{children}</ol>
               ),
               li: ({ children }) => <li>{children}</li>,
               a: ({ children, href }) => (
@@ -113,7 +161,7 @@ const Post: NextPage = ({ post }: any) => {
             }}
           />
         </article>
-        <Footer />
+        <Footer className="fixed md:relative bottom-0 left-0 w-full bg-white border-t-[0.5px] border-solid border-black md:border-none" />
       </div>
     </div>
   );
@@ -173,10 +221,53 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
     `,
     variables: { slug },
   });
+
   const { posts } = data;
   const post = posts[0];
-  //console.log(data);
-  return { props: { post }, revalidate: 10 };
+
+  const datePublished = post.datePublished;
+
+  const nextPost = await client.query({
+    query: gql`
+      query Post($date: Date!) {
+        posts(
+          where: { datePublished_gt: $date }
+          first: 1
+          orderBy: datePublished_ASC
+        ) {
+          slug
+        }
+      }
+    `,
+    variables: {
+      date: datePublished,
+    },
+  });
+
+  const nextPostData = nextPost.data.posts[0]; // Retrieve the previous post data
+  const nextPostSlug = nextPostData ? nextPostData.slug : null; // Extract the slug if available
+
+  const prevPost = await client.query({
+    query: gql`
+      query Post($date: Date!) {
+        posts(
+          where: { datePublished_lt: $date }
+          first: 1
+          orderBy: datePublished_DESC
+        ) {
+          slug
+        }
+      }
+    `,
+    variables: {
+      date: datePublished,
+    },
+  });
+
+  const prevPostData = prevPost.data.posts[0]; // Retrieve the next post data
+  const prevPostSlug = prevPostData ? prevPostData.slug : null; // Extract the slug if available
+
+  return { props: { post, nextPostSlug, prevPostSlug }, revalidate: 10 };
 }
 
 export default Post;
