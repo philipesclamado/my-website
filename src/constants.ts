@@ -13,4 +13,10 @@ export const Projects = [
       "an Unmanned Surface Vehicle that filter microplastics in the ocean using microbubble as method of filtration",
     link: "https://github.com/UVic-Environmental-Engineering-Club/USV-Pi/wiki/Project-Structure",
   },
+  {
+    title: "Underwater Glider (environmental engineering)",
+    description:
+      "an Autonomous Underwater Vehicle that is optimized for long distance missions and collect data about the ocean",
+    link: "https://docs.google.com/document/d/1068WrsZWZ_Hl5apEQwmm7ZRoZD9SaYN_WkKBdaa70NU/edit?usp=sharing",
+  },
 ];
