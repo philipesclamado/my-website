@@ -16,7 +16,7 @@ export const Projects = [
   {
     title: "Underwater Glider (environmental engineering)",
     description:
-      "an Autonomous Underwater Vehicle that is optimized for long distance missions and collect data about the ocean",
+      "an autonomous underwater vehicle optimized for long-distance missions and data collection in the ocean",
     link: "https://docs.google.com/document/d/1068WrsZWZ_Hl5apEQwmm7ZRoZD9SaYN_WkKBdaa70NU/edit?usp=sharing",
   },
 ];
