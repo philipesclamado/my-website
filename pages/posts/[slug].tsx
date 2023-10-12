@@ -82,7 +82,7 @@ const Post: NextPage = ({ post, nextPostSlug, prevPostSlug }: any) => {
                   return (
                     <span className="flex flex-col items-center">
                       <Image src={url} alt={""} height={height} width={width} />
-                      <span className="text-subtextColor break-normal text-xs">
+                      <span className="text-subtextColor break-normal text-xs justify-center text-center">
                         {description}
                       </span>
                     </span>

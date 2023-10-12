@@ -19,4 +19,10 @@ export const Projects = [
       "an Autonomous Underwater Vehicle optimized for long-distance missions and data collection in the ocean",
     link: "https://docs.google.com/document/d/1068WrsZWZ_Hl5apEQwmm7ZRoZD9SaYN_WkKBdaa70NU/edit?usp=sharing",
   },
+  {
+    title: "MaGP-I (avionics)",
+    description:
+      "Machine-Guided Parafoil v1 is one of the University of Victoria's rocketry team's legacy payloads.",
+    link: "https://github.com/philipesclamado/MaGP-I/wiki",
+  },
 ];
