@@ -161,7 +161,7 @@ export async function getStaticPaths() {
   const paths = posts.map((post: any) => ({
     params: { slug: post.slug.toString() },
   }));
-  return { paths, fallback: false };
+  return { paths, fallback: "blocking" };
 }
 
 export async function getStaticProps({ params }: { params: { slug: string } }) {
