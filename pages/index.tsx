@@ -34,7 +34,7 @@ const Home: NextPage = ({ posts }: any) => {
         <HeroBanner />
         <main>
           <section id="posts">
-            <h1 className="text-xl font-semibold mt-12 mb-4">Essay</h1>
+            <h1 className="text-xl font-semibold mt-12 mb-4">Elements</h1>
             {posts.map((post: any, index: number) => {
               return (
                 <div

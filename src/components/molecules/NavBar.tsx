@@ -23,8 +23,8 @@ export const NavBar = ({
         <div className={classNames("border", borderStyle)} />
         <li>
           <NavLink
-            name="Essay"
-            link="/essay"
+            name="Elements"
+            link="/elements"
             className={classNames(hoverStyle)}
           />
         </li>
