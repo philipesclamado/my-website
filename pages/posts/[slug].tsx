@@ -200,6 +200,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
       }
     `,
     variables: { slug },
+
   });
 
   const { posts } = data;
@@ -247,7 +248,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
   const prevPostData = prevPost.data.posts[0]; // Retrieve the next post data
   const prevPostSlug = prevPostData ? prevPostData.slug : null; // Extract the slug if available
 
-  return { props: { post, nextPostSlug, prevPostSlug }, revalidate: 10 };
+  return { props: { post, nextPostSlug, prevPostSlug }, revalidate: 60 };
 }
 
 export default Post;

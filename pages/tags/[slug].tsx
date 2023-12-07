@@ -80,7 +80,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
 
   const { posts } = data.tags[0];
 
-  return { props: { post: posts }, revalidate: 10 };
+  return { props: { post: posts }, revalidate: 60 };
 }
 
 export default RelatedPost;
