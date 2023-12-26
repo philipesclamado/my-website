@@ -4,6 +4,7 @@ export const CachedThoughts = [
   "We are beings with engineering opportunities.",
   "The only thing in this world that can teach you how to properly live life is living life.",
   "Time is a useful model, whether it exists or not.",
+  "Programs are built on ideas - they have to do something"
 ];
 
 export const Projects = [
