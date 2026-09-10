@@ -3551,13 +3551,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql@npm:^16.6.0":
-  version: 16.6.0
-  resolution: "graphql@npm:16.6.0"
-  checksum: 10c0/3a2c15ff58b69d017618d2b224fa6f3c4a7937e1f711c3a5e0948db536b4931e6e649560b53de7cc26735e027ceea6e2d0a6bb7c29fc4639b290313e3aa71618
-  languageName: node
-  linkType: hard
-
 "has-bigints@npm:^1.0.2":
   version: 1.1.0
   resolution: "has-bigints@npm:1.1.0"
@@ -5168,7 +5161,6 @@ __metadata:
     classnames: "npm:^2.3.2"
     eslint: "npm:^9"
     eslint-config-next: "npm:16.3.4"
-    graphql: "npm:^16.6.0"
     husky: "npm:^9.1.7"
     next: "npm:16.3.4"
     next-mdx-remote: "npm:^6.0.0"
