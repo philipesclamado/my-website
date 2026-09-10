@@ -1,10 +1,5 @@
-export const Brand = "Philip Esclamado";
-
 export const CachedThoughts = [
-  "We are beings with engineering opportunities.",
-  "The only thing in this world that can teach you how to properly live life is living life.",
   "Time is a useful model, whether it exists or not.",
-  "Programs are built on ideas - they have to do something"
 ];
 
 export const Projects = [
@@ -19,11 +14,5 @@ export const Projects = [
     description:
       "an Autonomous Underwater Vehicle optimized for long-distance missions and data collection in the ocean",
     link: "https://docs.google.com/document/d/1068WrsZWZ_Hl5apEQwmm7ZRoZD9SaYN_WkKBdaa70NU/edit?usp=sharing",
-  },
-  {
-    title: "MaGP-I (avionics)",
-    description:
-      "Machine-Guided Parafoil v1 is one of the University of Victoria's rocketry team's legacy payloads.",
-    link: "https://github.com/philipesclamado/MaGP-I/wiki",
   },
 ];
