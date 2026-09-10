@@ -19,7 +19,8 @@ export const metadata: Metadata = {
   description: "Home on the internet.",
 };
 
-const cx = (...classes) => classes.filter(Boolean).join(" ");
+const cx = (...classes: (string | false | null | undefined)[]): string =>
+  classes.filter(Boolean).join(" ");
 
 export default function RootLayout({
   children,
