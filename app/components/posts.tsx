@@ -16,20 +16,20 @@ export function BlogPosts() {
           return 1;
         })
         .map((post) => (
-          <Link
+          <div
             key={post.slug}
-            className="flex flex-col space-y-1 mb-4"
-            href={`/elements/${post.slug}`}
+            className="flex flex-col p-2 text-base md:flex-row md:text-sm"
           >
-            <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-2">
-              <p className="text-subtext tabular-nums">
-                {formatDate(post.metadata.publishedAt, false)}:&nbsp;
-              </p>
-              <p className="underline hover:decoration-highlight tracking-tight">
-                {post.metadata.title}
-              </p>
-            </div>
-          </Link>
+            <span className="text-subtext tabular-nums">
+              {formatDate(post.metadata.publishedAt, false)}:&nbsp;
+            </span>
+            <Link
+              className="wrap-break-word leading-relaxed underline hover:decoration-highlight"
+              href={`/elements/${post.slug}`}
+            >
+              {post.metadata.title}
+            </Link>
+          </div>
         ))}
     </div>
   );
