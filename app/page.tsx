@@ -25,23 +25,7 @@ export default function Page() {
         >
           <FaSnowflake className="h-5 w-5 fill-current hover:text-highlight hover:cursor-pointer" />
         </Link>
-        ,&nbsp;
-        <Link
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://github.com/philipesclamado"
-        >
-          <FaGithub className="h-5 w-5 fill-current hover:text-highlight hover:cursor-pointer" />
-        </Link>
-        ,&nbsp;
-        <Link
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.linkedin.com/in/philipesclamado"
-        >
-          <FaLinkedin className="h-5 w-5 fill-current hover:text-highlight hover:cursor-pointer" />
-        </Link>
-        ,&nbsp;and,&nbsp;
+        &nbsp;and&nbsp;
         <Link
           target="_blank"
           rel="noopener noreferrer"
@@ -53,7 +37,7 @@ export default function Page() {
       </p>
       <h1 className="text-xl font-semibold mt-12 mb-4">Elements</h1>
       <BlogPosts />
-      <h1 className="text-xl font-semibold mt-12 mb-4">Practice</h1>d
+      <h1 className="text-xl font-semibold mt-12 mb-4">Practice</h1>
     </section>
   );
 }
