@@ -27,6 +27,16 @@ export default function Footer() {
             Elements
           </Link>
         </li>
+        <div className="border-[0.5px] border-solid border-black dark:border-white" />
+        <li>
+          <Link
+            className="hover:text-subtext hover:decoration-black"
+            rel="noopener noreferrer"
+            href="/"
+          >
+            Practice
+          </Link>
+        </li>
       </ul>
     </footer>
   );

@@ -45,6 +45,16 @@ export default function Header() {
                 Elements
               </Link>
             </li>
+            <div className="border border-dashed border-highlight" />
+            <li>
+              <Link
+                className="hover:underline decoration-highlight"
+                rel="noopener noreferrer"
+                href="/"
+              >
+                Practice
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
