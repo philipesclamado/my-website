@@ -50,7 +50,7 @@ export default function Header() {
               <Link
                 className="hover:underline decoration-highlight"
                 rel="noopener noreferrer"
-                href="/"
+                href="#practice"
               >
                 Practice
               </Link>

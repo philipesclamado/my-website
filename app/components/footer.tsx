@@ -32,7 +32,7 @@ export default function Footer() {
           <Link
             className="hover:text-subtext hover:decoration-black"
             rel="noopener noreferrer"
-            href="/"
+            href="/#practice"
           >
             Practice
           </Link>
